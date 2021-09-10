@@ -1,5 +1,10 @@
 package EmployeePayroll;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,12 +17,14 @@ public class EmployeePayroll {
     EmployeePayrollData dataObj;
 
 
-    public static void main(String[] args) {
+    public static int main(String[] args) throws IOException {
         EmployeePayroll obj = new EmployeePayroll();
         obj.readingDataFromConsole();
         obj.readingDataFromConsole();
         obj.writingOnConsole();
+        obj.writingOnFile();
 
+        return obj.count;
     }
 
     public void readingDataFromConsole(){
@@ -39,6 +46,27 @@ public class EmployeePayroll {
             System.out.println("Salary:-" + empData.get(i).salary);
         }
 
+    }
+    int count =0;
+    public void writingOnFile() throws IOException {
+        Path path = Paths.get("C:\\Nikhil\\bridgelabz\\texts\\EmployeePayRoll\\EmployeePayRoll.txt");
+        if (Files.exists(path)){
+            System.out.println("File already Exists, so appending on it ");
+        }
+        else {
+            System.out.println("File does not exists, So creating new file ");
+            Files.createFile(path);
+        }
+
+        ArrayList<String> data = new ArrayList<>();
+        data.add("Name \t ID \t Salary");
+        for (int i=0 ;i<empData.size(); i++){
+            count++;
+            data.add(empData.get(i).name + " " + empData.get(i).id+ " " + empData.get(i).salary );
+        }
+
+        Files.write(path,data);
+        System.out.println("Data written in file using string" + empData.size());
     }
 
 }

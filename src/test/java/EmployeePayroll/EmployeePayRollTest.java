@@ -88,4 +88,11 @@ public class EmployeePayRollTest {
         new Java8WatcherServiceExample(dir).processEvents();
     }
 
+    @Test
+    public void EmployeePayroll_StoreEmployeeData() throws IOException {
+        EmployeePayroll empData = new EmployeePayroll();
+        Assert.assertEquals(2,EmployeePayroll.main(null));
+
+    }
+
 }
