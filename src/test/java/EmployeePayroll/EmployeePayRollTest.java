@@ -81,4 +81,11 @@ public class EmployeePayRollTest {
         }
     }
 
+    @Test
+    public void givenDirectoryWhenWatchedListAllTheActivities() throws IOException{
+        Path dir=Paths.get(DIR , "../texts/").normalize();
+        Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+        new Java8WatcherServiceExample(dir).processEvents();
+    }
+
 }
