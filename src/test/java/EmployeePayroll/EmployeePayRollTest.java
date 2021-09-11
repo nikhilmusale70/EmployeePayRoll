@@ -99,6 +99,8 @@ public class EmployeePayRollTest {
     public void printingEmployeePayRoll_FromFile() throws IOException {
         EmployeePayroll empObj = new EmployeePayroll();
         empObj.printingFromFile();
+        Assert.assertEquals(4,empObj.countLines());
     }
+
 
 }

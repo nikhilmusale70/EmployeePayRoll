@@ -83,4 +83,11 @@ public class EmployeePayroll {
             System.out.println(s);
     }
 
+    public long countLines() throws IOException{
+        long entries;
+        Path path = Paths.get("C:\\Nikhil\\bridgelabz\\texts\\EmployeePayRoll\\EmployeePayRoll.txt");
+        entries = Files.lines(path).count();
+        return entries;
+    }
+
 }
