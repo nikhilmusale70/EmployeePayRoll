@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -67,6 +68,19 @@ public class EmployeePayroll {
 
         Files.write(path,data);
         System.out.println("Data written in file using string" + empData.size());
+    }
+
+    public void printingFromFile() throws IOException {
+        Path path = Paths.get("C:\\Nikhil\\bridgelabz\\texts\\EmployeePayRoll\\EmployeePayRoll.txt");
+        List<String> data = null;
+        if (!Files.exists(path)){
+            System.out.println("File does not exists");
+        }
+        else {
+           data =  Files.readAllLines(path);
+        }
+        for (String s : data)
+            System.out.println(s);
     }
 
 }
